@@ -19,6 +19,15 @@ public class PlayerShipDataManager {
         }
     }
 
+    public static Weapon getWeapon(String s) {
+        if (s.indexOf('|') != -1) {
+            String[] arr = s.split("\\|");
+            return WeaponDataManager.retrieve(arr[0], arr[1]);
+        } else {
+            return WeaponDataManager.retrieve(s);
+        }
+    }
+
     public static void saveBuilds(ArrayList builds) {
         PrintWriter out = null;
         try {
@@ -39,18 +48,14 @@ public class PlayerShipDataManager {
                 out.print(pShip.getCraft() + ",");
                 out.print(pShip.getGunnery() + ",");
                 out.print(pShip.getNavigation() + ",");
-                out.print(pShip.getFigureHead().getName() + ",");
-                out.print(pShip.getSail().getName() + ",");
-                out.print(pShip.getStabilizer().getName() + ",");
-                out.print(pShip.getHull().getName() + ",");
-                out.print(pShip.getEngine().getName() + ",");
+                out.print(getWeaponString(pShip.getFigureHead()) + ",");
+                out.print(getWeaponString(pShip.getSail()) + ",");
+                out.print(getWeaponString(pShip.getStabilizer()) + ",");
+                out.print(getWeaponString(pShip.getHull()) + ",");
+                out.print(getWeaponString(pShip.getEngine()) + ",");
                 Weapon[] weapons = pShip.getAllWeapons();
                 for (int j = 0; j < weapons.length; j++) {
-                    if (weapons[j].getRefineLevel().equals("")) {
-                        out.print(weapons[j].getName());
-                    } else {
-                        out.print(weapons[j].getName() + "|" + weapons[j].getRefineLevel());
-                    }
+                    out.print(getWeaponString(weapons[j]));
                     if (j + 1 != weapons.length) {
                         out.print(",");
                     }
@@ -109,31 +114,25 @@ public class PlayerShipDataManager {
                 pShip.setCraft(Integer.parseInt(values[pos++]));
                 pShip.setGunnery(Integer.parseInt(values[pos++]));
                 pShip.setNavigation(Integer.parseInt(values[pos++]));
-                Weapon figureHead = WeaponDataManager.retrieve(values[pos++]);
-                Weapon sale = WeaponDataManager.retrieve(values[pos++]);
-                Weapon stabilizer = WeaponDataManager.retrieve(values[pos++]);
-                Weapon hull = WeaponDataManager.retrieve(values[pos++]);
-                Weapon engine = WeaponDataManager.retrieve(values[pos++]);
+                Weapon figureHead = getWeapon(values[pos++]);
+                Weapon sale = getWeapon(values[pos++]);
+                Weapon stabilizer = getWeapon(values[pos++]);
+                Weapon hull = getWeapon(values[pos++]);
+                Weapon engine = getWeapon(values[pos++]);
                 pShip.setFigureHead(figureHead);
                 pShip.setSail(sale);
                 pShip.setStabilizer(stabilizer);
                 pShip.setHull(hull);
                 pShip.setEngine(engine);
                 for (int i = pos; i < values.length; i++) {
-                    if (values[i].indexOf('|') != -1) {
-                        String[] arr = values[i].split("\\|");
-                        pShip.addWeapon(WeaponDataManager.retrieve(arr[0], arr[1]));
-                    } else {
-                        pShip.addWeapon(WeaponDataManager.retrieve(values[i]));
-                    }
-
+                    pShip.addWeapon(getWeapon(values[i]));
                 }
                 builds.add(pShip);
             }
 
         } catch (Exception e) {
 
-//            e.printStackTrace();
+            e.printStackTrace();
         }
         return builds;
     }
