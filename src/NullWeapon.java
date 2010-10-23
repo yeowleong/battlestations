@@ -30,6 +30,9 @@ public final class  NullWeapon extends Weapon {
         return 0;
     }
 
+    public String getRefineLevel() {
+        return "";
+    }
     public String toString() {
         return getName();
     }
