@@ -216,7 +216,8 @@ public class PlayerShip {
             if (w.isMelee()) {
                     total += 0.005 * getRealNavigation() * dmg;
             } else if (w.isMissile()) {
-                    total += Math.max(0.005 * getRealGunnery() + 0.0025 * getRealNavigation(), 0.0035 * getRealNavigation()) * dmg;
+                    total +=
+                            Math.max(0.005 * getRealGunnery() + 0.0025 * getRealNavigation(), 0.0035 * getRealGunnery() + 0.0035 * getRealNavigation()) * dmg;
             } else if (w.isSubcannon()) {
                     total += 0.004 * getRealGunnery() * dmg;
             } else {
@@ -236,7 +237,7 @@ public class PlayerShip {
             if (w.isMelee()) {
                     total += 0.005 * getRealNavigation() * dmg;
             } else if (w.isMissile()) {
-                    total += Math.max(0.005 * getRealGunnery() + 0.0025 * getRealNavigation(), 0.0035 * getRealNavigation()) * dmg;
+                    total += Math.max(0.005 * getRealGunnery() + 0.0025 * getRealNavigation(),0.0035 * getRealGunnery() + 0.0035 * getRealNavigation()) * dmg;
             } else if (w.isSubcannon()) {
                     total += 0.004 * getRealGunnery() * dmg;
             } else {
