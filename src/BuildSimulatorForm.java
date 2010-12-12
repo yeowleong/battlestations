@@ -137,7 +137,7 @@ public class BuildSimulatorForm {
         craftSpinner.setModel(new SpinnerNumberModel(0, 0, 900, 1));
         navigationSpinner.setModel(new SpinnerNumberModel(0, 0, 900, 1));
         gunnerySpinner.setModel(new SpinnerNumberModel(0, 0, 900, 1));
-        levelSpinner.setModel(new SpinnerNumberModel(0, 0, 200, 1));
+        levelSpinner.setModel(new SpinnerNumberModel(0, 0, 220, 1));
         setSpinnerAlignment();
 
         populateShip();
