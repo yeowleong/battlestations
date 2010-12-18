@@ -17,7 +17,7 @@ public class Weapon implements Payable {
     private static final String SLOW_DOWN = "Slow";
     private static final String LIMIT = "Limit";
     private static final String REFINE = "Refine";
-
+    private static final String RARITY = "Rarity";
     public Weapon() {
     }
 
@@ -32,6 +32,9 @@ public class Weapon implements Payable {
         return name;
     }
 
+    public boolean isRare() {
+        return "1".equals(data.get(RARITY));
+    }
     public int getHP() {
         return Integer.parseInt((String) data.get(HIT_POINT));
     }

@@ -162,6 +162,9 @@ public class BuildSimulatorForm {
                         Weapon w = (Weapon) weaponCombo.getSelectedItem();
                         if (playerShip.addWeapon(w)) {
                             button.setText(w.toString());
+                            if (w.isRare()) {
+                                button.setForeground(Color.BLUE);
+                            }
                             refresh();
                         } else {
                             limitLabel.setForeground(Color.RED);                            
@@ -270,73 +273,31 @@ public class BuildSimulatorForm {
                 }
             }
         });
-        weaponButton1.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                playerShip.removeWeapon(weaponButton1.getText());
-                weaponButton1.setText("Empty");
-                weaponButton1.setSelected(false);
-                refresh();
-            }
-        });
-        weaponButton2.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                playerShip.removeWeapon(weaponButton2.getText());
-                weaponButton2.setText("Empty");
-                weaponButton2.setSelected(false);
-                refresh();
-            }
-        });
-        weaponButton3.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                playerShip.removeWeapon(weaponButton3.getText());
-                weaponButton3.setText("Empty");
-                weaponButton3.setSelected(false);
-                refresh();
-            }
-        });
-        weaponButton4.addActionListener(new ActionListener() {
 
-            public void actionPerformed(ActionEvent e) {
-                playerShip.removeWeapon(weaponButton4.getText());
-                weaponButton4.setText("Empty");
-                weaponButton4.setSelected(false);
-                refresh();
-            }
-        });
-        weaponButton5.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                playerShip.removeWeapon(weaponButton5.getText());
-                weaponButton5.setText("Empty");
-                weaponButton5.setSelected(false);
-                refresh();
-            }
-        });
-        weaponButton6.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                playerShip.removeWeapon(weaponButton6.getText());
-                weaponButton6.setText("Empty");
-                weaponButton6.setSelected(false);
-                refresh();
-            }
-        });
+        ActionListener weaponListener = new ActionListener() {
+           public void actionPerformed(ActionEvent e) {
+                JButton btn = (JButton) e.getSource();
 
-        weaponButton7.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                playerShip.removeWeapon(weaponButton7.getText());
-                weaponButton7.setText("Empty");
-                weaponButton7.setSelected(false);
+                playerShip.removeWeapon(btn.getText());
+                btn.setText("Empty");
+                btn.setSelected(false);
+                btn.setForeground(Color.BLACK);
                 refresh();
             }
-        });
+        };
+        weaponButton1.addActionListener(weaponListener);
+        weaponButton2.addActionListener(weaponListener);
+        weaponButton3.addActionListener(weaponListener);
+        weaponButton4.addActionListener(weaponListener);
+        weaponButton5.addActionListener(weaponListener);
+        weaponButton6.addActionListener(weaponListener);
+        weaponButton7.addActionListener(weaponListener);
+        weaponButton8.addActionListener(weaponListener);
+        weaponButton9.addActionListener(weaponListener);
+        weaponButton10.addActionListener(weaponListener);
+        weaponButton11.addActionListener(weaponListener);
+        weaponButton12.addActionListener(weaponListener);
 
-        weaponButton8.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                playerShip.removeWeapon(weaponButton8.getText());
-                weaponButton8.setText("Empty");
-                weaponButton8.setSelected(false);
-                refresh();
-            }
-        });
 
 //        clearAllButton1.addActionListener(new ActionListener() {
 //            public void actionPerformed(ActionEvent e) {
@@ -753,93 +714,110 @@ public class BuildSimulatorForm {
 
             }
         });
-        weaponButton1.addMouseMotionListener(new MouseMotionAdapter() {
-            public void mouseMoved(MouseEvent e) {
-                String name = weaponButton1.getText();
-                Weapon w = WeaponDataManager.retrieve(
-                        name.substring(name.indexOf("-") + 2).trim());
-                if (w != null) {
-                    weaponButton1.setToolTipText("Damage:" + w.getMinDamage() + "-" + w.getMaxDamage()
-                            + " | Range:" + w.getRange());
-                }
-            }
-        });
-        weaponButton2.addMouseMotionListener(new MouseMotionAdapter() {
-            public void mouseMoved(MouseEvent e) {
-                String name = weaponButton2.getText();
-                Weapon w = WeaponDataManager.retrieve(
-                        name.substring(name.indexOf("-") + 2).trim());
-                if (w != null) {
-                    weaponButton2.setToolTipText("Damage:" + w.getMinDamage() + "-" + w.getMaxDamage()
-                            + " | Range:" + w.getRange());
-                }
-            }
-        });
-        weaponButton3.addMouseMotionListener(new MouseMotionAdapter() {
-            public void mouseMoved(MouseEvent e) {
-                String name = weaponButton3.getText();
-                Weapon w = WeaponDataManager.retrieve(
-                        name.substring(name.indexOf("-") + 2).trim());
-                if (w != null) {
-                    weaponButton3.setToolTipText("Damage:" + w.getMinDamage() + "-" + w.getMaxDamage()
-                            + " | Range:" + w.getRange());
-                }
-            }
-        });
-        weaponButton4.addMouseMotionListener(new MouseMotionAdapter() {
-            public void mouseMoved(MouseEvent e) {
-                String name = weaponButton4.getText();
-                Weapon w = WeaponDataManager.retrieve(
-                        name.substring(name.indexOf("-") + 2).trim());
-                if (w != null) {
-                    weaponButton4.setToolTipText("Damage:" + w.getMinDamage() + "-" + w.getMaxDamage()
-                            + " | Range:" + w.getRange());
-                }
-            }
-        });
-        weaponButton5.addMouseMotionListener(new MouseMotionAdapter() {
-            public void mouseMoved(MouseEvent e) {
-                String name = weaponButton5.getText();
-                Weapon w = WeaponDataManager.retrieve(
-                        name.substring(name.indexOf("-") + 2).trim());
-                if (w != null) {
-                    weaponButton5.setToolTipText("Damage:" + w.getMinDamage() + "-" + w.getMaxDamage()
-                            + " | Range:" + w.getRange());
-                }
-            }
-        });
-        weaponButton6.addMouseMotionListener(new MouseMotionAdapter() {
-            public void mouseMoved(MouseEvent e) {
-                String name = weaponButton6.getText();
-                Weapon w = WeaponDataManager.retrieve(
-                        name.substring(name.indexOf("-") + 2).trim());
-                if (w != null) {
-                    weaponButton6.setToolTipText("Damage:" + w.getMinDamage() + "-" + w.getMaxDamage()
-                            + " | Range:" + w.getRange());
-                }
-            }
-        });
 
-        weaponButton7.addMouseMotionListener(new MouseMotionAdapter() {
+        MouseMotionListener mmListener = new MouseMotionAdapter() {
             public void mouseMoved(MouseEvent e) {
-                String name = weaponButton7.getText();
+                JButton btn = (JButton)e.getSource();
+                String name = btn.getText();
                 Weapon w = WeaponDataManager.retrieve(
                         name.substring(name.indexOf("-") + 2).trim());
                 if (w != null) {
-                    weaponButton7.setToolTipText("Damage:" + w.getMinDamage() + "-" + w.getMaxDamage()
-                            + " | Range:" + w.getRange());
+                    btn.setToolTipText("Damage:" + w.getMinDamage() + "-" + w.getMaxDamage()
+                            + " | Range:" + w.getRange() + " | Weight:" + w.getWeight());
                 }
             }
-        });
+        };
 
-        weaponButton8.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                playerShip.removeWeapon(weaponButton8.getText());
-                weaponButton8.setText("Empty");
-                weaponButton8.setSelected(false);
-                refresh();
-            }
-        });
+        weaponButton1.addMouseMotionListener(mmListener);
+        weaponButton2.addMouseMotionListener(mmListener);
+        weaponButton3.addMouseMotionListener(mmListener);
+        weaponButton4.addMouseMotionListener(mmListener);
+        weaponButton5.addMouseMotionListener(mmListener);
+        weaponButton6.addMouseMotionListener(mmListener);
+        weaponButton7.addMouseMotionListener(mmListener);
+        weaponButton8.addMouseMotionListener(mmListener);
+        weaponButton9.addMouseMotionListener(mmListener);
+        weaponButton10.addMouseMotionListener(mmListener);
+        weaponButton11.addMouseMotionListener(mmListener);
+        weaponButton12.addMouseMotionListener(mmListener);
+
+
+//        weaponButton2.addMouseMotionListener(new MouseMotionAdapter() {
+//            public void mouseMoved(MouseEvent e) {
+//                String name = weaponButton2.getText();
+//                Weapon w = WeaponDataManager.retrieve(
+//                        name.substring(name.indexOf("-") + 2).trim());
+//                if (w != null) {
+//                    weaponButton2.setToolTipText("Damage:" + w.getMinDamage() + "-" + w.getMaxDamage()
+//                            + " | Range:" + w.getRange());
+//                }
+//            }
+//        });
+//        weaponButton3.addMouseMotionListener(new MouseMotionAdapter() {
+//            public void mouseMoved(MouseEvent e) {
+//                String name = weaponButton3.getText();
+//                Weapon w = WeaponDataManager.retrieve(
+//                        name.substring(name.indexOf("-") + 2).trim());
+//                if (w != null) {
+//                    weaponButton3.setToolTipText("Damage:" + w.getMinDamage() + "-" + w.getMaxDamage()
+//                            + " | Range:" + w.getRange());
+//                }
+//            }
+//        });
+//        weaponButton4.addMouseMotionListener(new MouseMotionAdapter() {
+//            public void mouseMoved(MouseEvent e) {
+//                String name = weaponButton4.getText();
+//                Weapon w = WeaponDataManager.retrieve(
+//                        name.substring(name.indexOf("-") + 2).trim());
+//                if (w != null) {
+//                    weaponButton4.setToolTipText("Damage:" + w.getMinDamage() + "-" + w.getMaxDamage()
+//                            + " | Range:" + w.getRange());
+//                }
+//            }
+//        });
+//        weaponButton5.addMouseMotionListener(new MouseMotionAdapter() {
+//            public void mouseMoved(MouseEvent e) {
+//                String name = weaponButton5.getText();
+//                Weapon w = WeaponDataManager.retrieve(
+//                        name.substring(name.indexOf("-") + 2).trim());
+//                if (w != null) {
+//                    weaponButton5.setToolTipText("Damage:" + w.getMinDamage() + "-" + w.getMaxDamage()
+//                            + " | Range:" + w.getRange());
+//                }
+//            }
+//        });
+//        weaponButton6.addMouseMotionListener(new MouseMotionAdapter() {
+//            public void mouseMoved(MouseEvent e) {
+//                String name = weaponButton6.getText();
+//                Weapon w = WeaponDataManager.retrieve(
+//                        name.substring(name.indexOf("-") + 2).trim());
+//                if (w != null) {
+//                    weaponButton6.setToolTipText("Damage:" + w.getMinDamage() + "-" + w.getMaxDamage()
+//                            + " | Range:" + w.getRange());
+//                }
+//            }
+//        });
+//
+//        weaponButton7.addMouseMotionListener(new MouseMotionAdapter() {
+//            public void mouseMoved(MouseEvent e) {
+//                String name = weaponButton7.getText();
+//                Weapon w = WeaponDataManager.retrieve(
+//                        name.substring(name.indexOf("-") + 2).trim());
+//                if (w != null) {
+//                    weaponButton7.setToolTipText("Damage:" + w.getMinDamage() + "-" + w.getMaxDamage()
+//                            + " | Range:" + w.getRange());
+//                }
+//            }
+//        });
+//
+//        weaponButton8.addActionListener(new ActionListener() {
+//            public void actionPerformed(ActionEvent e) {
+//                playerShip.removeWeapon(weaponButton8.getText());
+//                weaponButton8.setText("Empty");
+//                weaponButton8.setSelected(false);
+//                refresh();
+//            }
+//        });
 
         weaponCombo.addMouseMotionListener(new MouseMotionAdapter() {
             public void mouseMoved(MouseEvent e) {
@@ -905,40 +883,40 @@ public class BuildSimulatorForm {
 //                         lbl.setOpaque(true);
 //                         gb.add(lbl);
 
-        weaponButton9.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                playerShip.removeWeapon(weaponButton9.getText());
-                weaponButton9.setText("Empty");
-                weaponButton9.setSelected(false);
-                refresh();
-            }
-        });
-        weaponButton10.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                playerShip.removeWeapon(weaponButton10.getText());
-                weaponButton10.setText("Empty");
-                weaponButton10.setSelected(false);
-                refresh();
-            }
-
-        });
-
-         weaponButton11.addActionListener(new ActionListener() {
-             public void actionPerformed(ActionEvent e) {
-                playerShip.removeWeapon(weaponButton11.getText());
-                weaponButton11.setText("Empty");
-                weaponButton11.setSelected(false);
-                refresh();
-            }
-        });
-        weaponButton12.addActionListener(new ActionListener() {
-                        public void actionPerformed(ActionEvent e) {
-                playerShip.removeWeapon(weaponButton12.getText());
-                weaponButton12.setText("Empty");
-                weaponButton12.setSelected(false);
-                refresh();
-            }
-        });
+//        weaponButton9.addActionListener(new ActionListener() {
+//            public void actionPerformed(ActionEvent e) {
+//                playerShip.removeWeapon(weaponButton9.getText());
+//                weaponButton9.setText("Empty");
+//                weaponButton9.setSelected(false);
+//                refresh();
+//            }
+//        });
+//        weaponButton10.addActionListener(new ActionListener() {
+//            public void actionPerformed(ActionEvent e) {
+//                playerShip.removeWeapon(weaponButton10.getText());
+//                weaponButton10.setText("Empty");
+//                weaponButton10.setSelected(false);
+//                refresh();
+//            }
+//
+//        });
+//
+//         weaponButton11.addActionListener(new ActionListener() {
+//             public void actionPerformed(ActionEvent e) {
+//                playerShip.removeWeapon(weaponButton11.getText());
+//                weaponButton11.setText("Empty");
+//                weaponButton11.setSelected(false);
+//                refresh();
+//            }
+//        });
+//        weaponButton12.addActionListener(new ActionListener() {
+//                        public void actionPerformed(ActionEvent e) {
+//                playerShip.removeWeapon(weaponButton12.getText());
+//                weaponButton12.setText("Empty");
+//                weaponButton12.setSelected(false);
+//                refresh();
+//            }
+//        });
 
 
         altShopShipCombo.addActionListener(new ActionListener() {
@@ -1079,6 +1057,11 @@ public class BuildSimulatorForm {
 
         for (int i = 0; i < weapons.length; i++) {
             weaponSlots[i].setText(weapons[i].toString());
+            if (weapons[i].isRare()) {
+                weaponSlots[i].setForeground(Color.BLUE);
+            } else {
+                weaponSlots[i].setForeground(Color.BLACK);
+            }
         }
 
     }
@@ -1198,6 +1181,19 @@ public class BuildSimulatorForm {
         usedCapacityText.setText("" + usedCapacity);
         assignedText.setText("" + (total - available));
         remainingCapacityText.setText("" + (capacity - usedCapacity));
+
+//        weaponButton1.setForeground(Color.BLACK);
+//        weaponButton2.setForeground(Color.BLACK);
+//        weaponButton3.setForeground(Color.BLACK);
+//        weaponButton4.setForeground(Color.BLACK);
+//        weaponButton5.setForeground(Color.BLACK);
+//        weaponButton6.setForeground(Color.BLACK);
+//        weaponButton7.setForeground(Color.BLACK);
+//        weaponButton8.setForeground(Color.BLACK);
+//        weaponButton9.setForeground(Color.BLACK);
+//        weaponButton10.setForeground(Color.BLACK);
+//        weaponButton11.setForeground(Color.BLACK);
+//         weaponButton12.setForeground(Color.BLACK);
 
     }
 

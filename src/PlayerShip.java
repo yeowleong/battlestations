@@ -101,7 +101,11 @@ public class PlayerShip {
                 if  (w.getName().equals(weapon.getName())) {
                     count++;
                 }
+                if (weapon.isRare() && w.isRare()) {
+                    return false;
+                }
             }
+
             if (count < weapon.getLimit()) {
                 weapons.add(weapon);
                 return true;
