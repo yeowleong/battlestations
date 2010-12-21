@@ -104,6 +104,7 @@ public class BuildSimulatorForm {
     private JTable altShipTable;
     private JButton cccShipButton;
     private JButton tcsShipButton;
+    private JTextField slowdownText;
     private JTable craftingTable;
 
     private ArrayList<PlayerShip> builds;
@@ -1170,6 +1171,7 @@ public class BuildSimulatorForm {
         minRangeText.setText("" + playerShip.getMinRange());
         maxRangeText.setText("" + playerShip.getMaxRange());
         hpText.setText("" + playerShip.getHP());
+        slowdownText.setText("" + playerShip.getSlowdown());
         int capacity = playerShip.getCapacity();
         int usedCapacity = playerShip.getUsedCapacity();
         if (usedCapacity > capacity) {

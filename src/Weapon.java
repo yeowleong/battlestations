@@ -84,6 +84,7 @@ public class Weapon implements Payable {
         return Integer.parseInt((String) data.get("Plasma Rock"));
     }
 
+
     public String getPort() {
         return (String) data.get("Port");
     }
@@ -97,8 +98,8 @@ public class Weapon implements Payable {
 
     }
 
-    public String getSlowdown() {
-        return (String)data.get(SLOW_DOWN);
+    public int getSlowdown() {
+        return Integer.parseInt((String)data.get(SLOW_DOWN));
     }
 
     public int getLimit() {

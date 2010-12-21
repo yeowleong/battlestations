@@ -516,4 +516,13 @@ public class PlayerShip {
 //    public double getTotalPoint() {
 //        return getCraft() + getNavigation() + getGunnery();
 //    }
+
+    public int getSlowdown() {
+        int total = 0;
+        for (Iterator iter = weapons.iterator(); iter.hasNext();) {
+            Weapon w = (Weapon) iter.next();
+            total += w.getSlowdown();
+        }
+        return total;
+    }
 }

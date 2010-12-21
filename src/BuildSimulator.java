@@ -10,7 +10,7 @@ import javax.swing.*;
 public class BuildSimulator {
 
     public static void main(String[] args) throws Exception {
-        JFrame frame = new JFrame("Battle Stations Build Simulator - V20101218");
+        JFrame frame = new JFrame("Battle Stations Build Simulator - V20101221");
         frame.setContentPane(new BuildSimulatorForm().mainPanel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
