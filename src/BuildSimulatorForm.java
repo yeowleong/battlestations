@@ -105,6 +105,7 @@ public class BuildSimulatorForm {
     private JButton cccShipButton;
     private JButton tcsShipButton;
     private JTextField slowdownText;
+    private JButton weaponButton13;
     private JTable craftingTable;
 
     private ArrayList<PlayerShip> builds;
@@ -114,7 +115,7 @@ public class BuildSimulatorForm {
             weaponButton3, weaponButton4,
             weaponButton5, weaponButton6,
             weaponButton7, weaponButton8,
-            weaponButton9, weaponButton10,weaponButton11,weaponButton12};
+            weaponButton9, weaponButton10,weaponButton11,weaponButton12,weaponButton13};
     private PartTableModel partTableModel;
     private WeaponTableModel weaponTableModel;
     private ShopTableModel shopTableModel;
@@ -135,9 +136,9 @@ public class BuildSimulatorForm {
         }
 
 //
-        craftSpinner.setModel(new SpinnerNumberModel(0, 0, 900, 1));
-        navigationSpinner.setModel(new SpinnerNumberModel(0, 0, 900, 1));
-        gunnerySpinner.setModel(new SpinnerNumberModel(0, 0, 900, 1));
+        craftSpinner.setModel(new SpinnerNumberModel(0, 0, 990, 1));
+        navigationSpinner.setModel(new SpinnerNumberModel(0, 0, 990, 1));
+        gunnerySpinner.setModel(new SpinnerNumberModel(0, 0, 990, 1));
         levelSpinner.setModel(new SpinnerNumberModel(0, 0, 220, 1));
         setSpinnerAlignment();
 
@@ -298,7 +299,7 @@ public class BuildSimulatorForm {
         weaponButton10.addActionListener(weaponListener);
         weaponButton11.addActionListener(weaponListener);
         weaponButton12.addActionListener(weaponListener);
-
+        weaponButton13.addActionListener(weaponListener);
 
 //        clearAllButton1.addActionListener(new ActionListener() {
 //            public void actionPerformed(ActionEvent e) {
@@ -931,6 +932,7 @@ public class BuildSimulatorForm {
         });
 
 
+
     }
 
     private void setMinimumLevelForSpinners() {
@@ -1079,6 +1081,7 @@ public class BuildSimulatorForm {
             playerShip.removeWeapon(weaponSlots[i].getText());
             weaponSlots[i].setText("Empty");
             weaponSlots[i].setSelected(false);
+            weaponSlots[i].setForeground(Color.BLACK);
             refresh();
 
         }
@@ -1362,7 +1365,7 @@ public class BuildSimulatorForm {
 
         Ship s = ShipDataManager.retrieve("Windrider");
         if (s == null) {
-            s = ShipDataManager.retrieve("Sail Boat");
+            s = ShipDataManager.retrieve("Patrol Boat");
         }
 
         altShipTableModel = new ShipTableModel();
